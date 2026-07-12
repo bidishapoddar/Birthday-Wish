@@ -378,6 +378,11 @@ button:hover{
 
 <body>
 
+<!-- Audio element for birthday song -->
+<audio id="birthdaySong" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2854/2854-preview.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
 
 <!-- COUNTDOWN LAYER - TOP -->
@@ -459,61 +464,13 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// Web Audio API - Birthday Song Generator
+// Play birthday song
 function playSong() {
-    try {
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        
-        // Notes for "Happy Birthday" melody
-        const notes = [
-            { freq: 261.63, duration: 0.3 }, // C
-            { freq: 261.63, duration: 0.3 }, // C
-            { freq: 293.66, duration: 0.6 }, // D
-            { freq: 261.63, duration: 0.6 }, // C
-            { freq: 329.63, duration: 0.6 }, // E
-            { freq: 311.13, duration: 1.2 }, // D#
-            { freq: 261.63, duration: 0.3 }, // C
-            { freq: 261.63, duration: 0.3 }, // C
-            { freq: 293.66, duration: 0.6 }, // D
-            { freq: 261.63, duration: 0.6 }, // C
-            { freq: 349.23, duration: 0.6 }, // F
-            { freq: 329.63, duration: 1.2 }, // E
-            { freq: 261.63, duration: 0.3 }, // C
-            { freq: 261.63, duration: 0.3 }, // C
-            { freq: 523.25, duration: 0.6 }, // C (higher)
-            { freq: 392.00, duration: 0.6 }, // G
-            { freq: 349.23, duration: 0.6 }, // F
-            { freq: 329.63, duration: 0.6 }, // E
-            { freq: 293.66, duration: 0.6 }, // D
-            { freq: 277.18, duration: 1.2 }, // C#
-        ];
-        
-        let currentTime = audioContext.currentTime;
-        
-        notes.forEach(note => {
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.value = note.freq;
-            oscillator.type = 'sine';
-            
-            gainNode.gain.setValueAtTime(0.3, currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, currentTime + note.duration);
-            
-            oscillator.start(currentTime);
-            oscillator.stop(currentTime + note.duration);
-            
-            currentTime += note.duration;
-        });
-        
-        celebrate();
-    } catch(e) {
-        console.log('Audio context not available');
-        celebrate();
+    const audio = document.getElementById('birthdaySong');
+    if(audio) {
+        audio.play().catch(err => console.log('Audio play failed:', err));
     }
+    celebrate();
 }
 
 // Auto-play birthday song on page load
