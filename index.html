@@ -78,7 +78,7 @@ h1{
 .subtitle{
     color:#4f6f59;
     font-weight:600;
-    font-size:0.8rem;
+    font-size:0.9rem;
     letter-spacing:1px;
     margin:5px 0;
 }
@@ -95,8 +95,42 @@ h1{
     font-weight:600;
 }
 
+.countdown-box{
+    background:rgba(99,199,122,.2);
+    border:1.5px solid rgba(99,199,122,.4);
+    border-radius:15px;
+    padding:12px;
+    margin:10px 0;
+    font-size:0.9rem;
+    color:#2d8b57;
+    font-weight:600;
+}
+
+.countdown-item{
+    display:inline-block;
+    margin:0 3px;
+    padding:8px 10px;
+    background:rgba(255,255,255,.6);
+    border-radius:8px;
+    min-width:45px;
+}
+
+.countdown-label{
+    font-size:0.65rem;
+    font-weight:500;
+    color:#4f6f59;
+    display:block;
+}
+
+.countdown-value{
+    font-size:0.95rem;
+    font-weight:700;
+    color:#2d8b57;
+    display:block;
+}
+
 .message{
-    margin:15px 0;
+    margin:12px 0;
     color:#35543d;
     font-size:0.85rem;
     line-height:1.5;
@@ -128,7 +162,7 @@ h1{
 }
 
 .footer{
-    margin:12px 0;
+    margin:10px 0;
     color:#45614e;
     font-size:0.8rem;
     font-weight:300;
@@ -147,7 +181,7 @@ h1{
 }
 
 button{
-    margin-top:12px;
+    margin-top:10px;
     padding:10px 24px;
     border:none;
     border-radius:35px;
@@ -242,9 +276,31 @@ button:hover{
 <body>
 
 <div class="card">
-<h1>Happy Birthday! 🎂</h1>
-<div class="subtitle">A Special Day</div>
+<h1>Happy Birthday Suman! 🎂</h1>
+<div class="subtitle">✨ A Very Special Day ✨</div>
 <div class="date-badge">13 July 💚</div>
+
+<div class="countdown-box">
+<div style="margin-bottom:8px; font-size:0.8rem;">Days Until Celebration:</div>
+<div>
+<span class="countdown-item">
+<span class="countdown-label">Days</span>
+<span class="countdown-value" id="days">0</span>
+</span>
+<span class="countdown-item">
+<span class="countdown-label">Hours</span>
+<span class="countdown-value" id="hours">0</span>
+</span>
+<span class="countdown-item">
+<span class="countdown-label">Mins</span>
+<span class="countdown-value" id="mins">0</span>
+</span>
+<span class="countdown-item">
+<span class="countdown-label">Secs</span>
+<span class="countdown-value" id="secs">0</span>
+</span>
+</div>
+</div>
 
 <div class="message">
 <div>To the most amazing person! 💚</div>
@@ -257,7 +313,7 @@ button:hover{
 </div>
 
 <div class="footer">
-Happy Birthday!
+Happy Birthday Suman!
 <div class="footer-love">❤️ Have a wonderful day! ❤️</div>
 </div>
 
@@ -265,6 +321,41 @@ Happy Birthday!
 </div>
 
 <script>
+
+// Countdown Timer
+function updateCountdown() {
+    // Kolkata timezone (IST = UTC+5:30)
+    const now = new Date();
+    const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+    
+    // Get today's date in IST
+    const today = new Date(istTime);
+    today.setHours(0, 0, 0, 0);
+    
+    // End of today (23:59:59)
+    const endOfDay = new Date(istTime);
+    endOfDay.setHours(23, 59, 59, 999);
+    
+    // Calculate difference in milliseconds
+    const diff = endOfDay - istTime;
+    
+    // Convert to days, hours, minutes, seconds
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / (24 * 60 * 60));
+    const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+    const mins = Math.floor((totalSeconds % (60 * 60)) / 60);
+    const secs = totalSeconds % 60;
+    
+    // Update display
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('mins').textContent = String(mins).padStart(2, '0');
+    document.getElementById('secs').textContent = String(secs).padStart(2, '0');
+}
+
+// Update countdown every second
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
 // Balloons
 for(let i=0;i<12;i++){
