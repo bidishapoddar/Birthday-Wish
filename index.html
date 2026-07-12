@@ -41,42 +41,43 @@ body{
 }
 
 .circle-1{
-    width:400px;
-    height:400px;
+    width:300px;
+    height:300px;
     background:#2d8b57;
-    top:-100px;
-    left:-100px;
+    top:-80px;
+    left:-80px;
     animation:float 8s ease-in-out infinite;
 }
 
 .circle-2{
-    width:300px;
-    height:300px;
+    width:250px;
+    height:250px;
     background:#ff2d55;
-    bottom:-50px;
-    right:-50px;
+    bottom:-40px;
+    right:-40px;
     animation:float 10s ease-in-out infinite reverse;
 }
 
 @keyframes float{
     0%,100%{transform:translate(0,0);}
-    50%{transform:translate(30px,-30px);}
+    50%{transform:translate(20px,-20px);}
 }
 
 .card{
-    width:90%;
-    max-width:760px;
-    padding:50px;
+    width:92%;
+    max-width:680px;
+    padding:32px;
     text-align:center;
     background:rgba(255,255,255,.40);
     backdrop-filter:blur(20px);
-    border-radius:35px;
+    border-radius:30px;
     border:2px solid rgba(255,255,255,.6);
     box-shadow:0 20px 60px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.5);
     animation:floatCard 4s ease-in-out infinite;
     position:relative;
     z-index:10;
     overflow:hidden;
+    max-height:90vh;
 }
 
 .card::before{
@@ -91,17 +92,18 @@ body{
 
 @keyframes floatCard{
     0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
+    50%{transform:translateY(-10px);}
 }
 
 h1{
     font-family:'Great Vibes',cursive;
-    font-size:3.5rem;
+    font-size:2.8rem;
     font-weight:400;
     color:#2d8b57;
     animation:glow 2.5s infinite alternate;
     letter-spacing:1px;
     text-shadow:0 2px 10px rgba(45,139,87,.1);
+    margin-bottom:8px;
 }
 
 @keyframes glow{
@@ -110,48 +112,47 @@ h1{
 }
 
 .subtitle{
-    margin-top:12px;
     color:#4f6f59;
     font-weight:600;
-    letter-spacing:2px;
-    font-size:1.1rem;
+    letter-spacing:1.5px;
+    font-size:0.9rem;
 }
 
 .date-badge{
     display:inline-block;
-    margin-top:15px;
-    padding:8px 20px;
+    margin-top:10px;
+    padding:6px 16px;
     background:rgba(99,199,122,.15);
     border:1.5px solid rgba(99,199,122,.3);
-    border-radius:25px;
+    border-radius:20px;
     color:#2d8b57;
-    font-size:0.95rem;
+    font-size:0.85rem;
     font-weight:600;
 }
 
 .message{
-    margin-top:35px;
+    margin-top:20px;
     color:#35543d;
-    font-size:1.1rem;
-    line-height:1.9;
+    font-size:0.95rem;
+    line-height:1.6;
     font-weight:300;
 }
 
 .message-line{
-    margin:15px 0;
+    margin:10px 0;
     opacity:0;
     animation:fadeInUp 0.8s ease forwards;
 }
 
-.message-line:nth-child(1){animation-delay:0.2s;}
-.message-line:nth-child(2){animation-delay:0.4s;}
-.message-line:nth-child(3){animation-delay:0.6s;}
-.message-line:nth-child(4){animation-delay:0.8s;}
+.message-line:nth-child(1){animation-delay:0.1s;}
+.message-line:nth-child(2){animation-delay:0.2s;}
+.message-line:nth-child(3){animation-delay:0.3s;}
+.message-line:nth-child(4){animation-delay:0.4s;}
 
 @keyframes fadeInUp{
     from{
         opacity:0;
-        transform:translateY(20px);
+        transform:translateY(15px);
     }
     to{
         opacity:1;
@@ -163,18 +164,20 @@ h1{
     color:#1d8c4f;
     font-weight:600;
     background:linear-gradient(135deg,rgba(99,199,122,.1),rgba(169,239,187,.1));
-    padding:12px 16px;
-    border-radius:12px;
+    padding:10px 12px;
+    border-radius:10px;
     display:inline-block;
-    margin:10px 0;
+    margin:8px 0;
+    font-size:0.93rem;
 }
 
 .heart{
     color:#ff2d55;
-    font-size:2.5rem;
+    font-size:2rem;
     animation:beat 1s infinite;
     text-shadow:0 0 20px rgba(255,45,85,.4);
     display:inline-block;
+    margin:5px 0;
 }
 
 @keyframes beat{
@@ -185,17 +188,17 @@ h1{
 }
 
 .footer{
-    margin-top:35px;
+    margin-top:18px;
     color:#45614e;
-    font-size:1rem;
+    font-size:0.9rem;
     font-weight:300;
 }
 
 .footer-love{
     color:#ff2d55;
-    font-size:1.2rem;
+    font-size:1rem;
     font-weight:bold;
-    margin-top:10px;
+    margin-top:8px;
     animation:beatSlow 1.5s infinite;
 }
 
@@ -205,14 +208,14 @@ h1{
 }
 
 button{
-    margin-top:35px;
-    padding:16px 35px;
+    margin-top:20px;
+    padding:12px 28px;
     border:none;
-    border-radius:50px;
+    border-radius:40px;
     background:linear-gradient(135deg,#63c77a,#4aae63);
     color:white;
     cursor:pointer;
-    font-size:1rem;
+    font-size:0.9rem;
     font-weight:600;
     transition:all 0.3s ease;
     box-shadow:0 8px 25px rgba(99,199,122,.3);
@@ -234,23 +237,23 @@ button::before{
 }
 
 button:hover::before{
-    width:300px;
-    height:300px;
+    width:250px;
+    height:250px;
 }
 
 button:hover{
-    transform:translateY(-3px);
+    transform:translateY(-2px);
     box-shadow:0 12px 35px rgba(99,199,122,.4);
 }
 
 button:active{
-    transform:translateY(-1px);
+    transform:translateY(0px);
 }
 
 .balloon{
     position:absolute;
-    bottom:-120px;
-    width:45px;
+    bottom:-100px;
+    width:35px;
     animation:rise linear infinite;
     filter:drop-shadow(0 4px 8px rgba(0,0,0,.1));
 }
@@ -258,8 +261,8 @@ button:active{
 .balloon::before{
     content:"";
     position:absolute;
-    width:45px;
-    height:55px;
+    width:35px;
+    height:43px;
     border-radius:50% 50% 50% 40%;
     background:linear-gradient(135deg,#95e6a7,#7fd499);
     box-shadow:inset -2px -2px 5px rgba(0,0,0,.1);
@@ -268,10 +271,10 @@ button:active{
 .balloon::after{
     content:"";
     position:absolute;
-    left:22px;
-    top:55px;
-    width:1.5px;
-    height:65px;
+    left:17px;
+    top:43px;
+    width:1px;
+    height:50px;
     background:linear-gradient(180deg,#888,#aaa);
 }
 
@@ -288,12 +291,12 @@ button:active{
 
 .sparkle{
     position:absolute;
-    width:6px;
-    height:6px;
+    width:5px;
+    height:5px;
     border-radius:50%;
     background:white;
     animation:twinkle 2s infinite;
-    box-shadow:0 0 8px #fff;
+    box-shadow:0 0 6px #fff;
 }
 
 @keyframes twinkle{
@@ -303,14 +306,14 @@ button:active{
     }
     50%{
         opacity:1;
-        transform:scale(1.5);
+        transform:scale(1.3);
     }
 }
 
 .floatHeart{
     position:absolute;
     color:#ff2d55;
-    font-size:24px;
+    font-size:20px;
     animation:heartFloat linear infinite;
     opacity:.8;
     text-shadow:0 0 10px rgba(255,45,85,.3);
@@ -333,7 +336,7 @@ button:active{
 .star{
     position:absolute;
     color:#ffd700;
-    font-size:18px;
+    font-size:16px;
     animation:twinkleStar 1.5s infinite;
     text-shadow:0 0 8px rgba(255,215,0,.5);
 }
@@ -352,54 +355,50 @@ button:active{
 
 <div class="card">
 
-<h1>Happy Birthday Suman! 🎂</h1>
+<h1>Happy Birthday! 🎂</h1>
 
 <div class="subtitle">🎉 A Special Day 🎉</div>
 <div class="date-badge">13 July 💚</div>
 
 <div class="message">
-<div class="message-line">Wishing the happiest birthday to the most amazing person! 💚</div>
+<div class="message-line">To the most amazing person! 💚</div>
 
-<div class="message-line">May this new year of your life be filled with endless happiness,<br>beautiful memories, exciting adventures, and every success you dream of.</div>
+<div class="message-line">May your day be filled with endless happiness,<br>beautiful memories & every success you dream of.</div>
 
 <div class="message-line">
 <span class="highlight">
-Keep smiling, keep shining, and never stop believing in yourself.<br>You deserve all the love, peace, and joy in the world.
+Keep smiling, keep shining!<br>You deserve all the love & joy.
 </span>
 </div>
 
-<div class="message-line">No matter where life takes us,<br>I hope today reminds you just how special and deeply loved you are.</div>
+<div class="message-line">You are deeply loved & special! 💕</div>
 
 <div class="message-line"><span class="heart">❤️</span></div>
 </div>
 
 <div class="footer">
-<div>Happy Birthday once again!</div>
-<div class="footer-love">❤️ Have the most wonderful day! ❤️</div>
+<div>Happy Birthday!</div>
+<div class="footer-love">❤️ Have a wonderful day! ❤️</div>
 </div>
 
-<button onclick="celebrate()">Click for Birthday Magic ✨</button>
+<button onclick="celebrate()">Birthday Magic ✨</button>
 
 </div>
 
 <script>
 
 // Balloons
-for(let i=0;i<20;i++){
+for(let i=0;i<15;i++){
     let b=document.createElement("div");
     b.className="balloon";
     b.style.left=Math.random()*100+"vw";
-    b.style.animationDuration=(9+Math.random()*7)+"s";
-    b.style.animationDelay=Math.random()*6+"s";
-    
-    const colors=['#95e6a7','#ff6b81','#ffb347','#87ceeb','#ffc0cb'];
-    b.style.setProperty('--balloon-color',colors[Math.floor(Math.random()*colors.length)]);
-    
+    b.style.animationDuration=(8+Math.random()*6)+"s";
+    b.style.animationDelay=Math.random()*5+"s";
     document.body.appendChild(b);
 }
 
 // Sparkles
-for(let i=0;i<70;i++){
+for(let i=0;i<50;i++){
     let s=document.createElement("div");
     s.className="sparkle";
     s.style.left=Math.random()*100+"vw";
@@ -410,19 +409,19 @@ for(let i=0;i<70;i++){
 
 // Floating Hearts
 const hearts=["❤️","💕","💖","💗","💘"];
-for(let i=0;i<30;i++){
+for(let i=0;i<20;i++){
     let h=document.createElement("div");
     h.className="floatHeart";
     h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
     h.style.left=Math.random()*100+"vw";
-    h.style.animationDuration=(8+Math.random()*7)+"s";
-    h.style.animationDelay=Math.random()*6+"s";
-    h.style.fontSize=(16+Math.random()*20)+"px";
+    h.style.animationDuration=(7+Math.random()*6)+"s";
+    h.style.animationDelay=Math.random()*4+"s";
+    h.style.fontSize=(14+Math.random()*16)+"px";
     document.body.appendChild(h);
 }
 
 // Stars
-for(let i=0;i<15;i++){
+for(let i=0;i<10;i++){
     let star=document.createElement("div");
     star.className="star";
     star.innerHTML="⭐";
@@ -445,21 +444,21 @@ function celebrate(){
         "#ffffff"
     ];
 
-    for(let i=0;i<280;i++){
+    for(let i=0;i<200;i++){
         let c=document.createElement("div");
         
         c.style.position="fixed";
         c.style.left=Math.random()*100+"vw";
         c.style.top="-20px";
-        c.style.width=Math.random()*8+8+"px";
-        c.style.height=Math.random()*8+8+"px";
+        c.style.width=Math.random()*6+6+"px";
+        c.style.height=Math.random()*6+6+"px";
         c.style.borderRadius="50%";
         c.style.background=colors[Math.floor(Math.random()*colors.length)];
-        c.style.boxShadow="0 0 10px "+colors[Math.floor(Math.random()*colors.length)];
+        c.style.boxShadow="0 0 8px "+colors[Math.floor(Math.random()*colors.length)];
 
         document.body.appendChild(c);
 
-        let duration=3000+Math.random()*2000;
+        let duration=2500+Math.random()*1500;
 
         c.animate([
             {
@@ -467,7 +466,7 @@ function celebrate(){
                 opacity:1
             },
             {
-                transform:`translate(${(Math.random()-0.5)*500}px,${window.innerHeight+120}px) rotate(${Math.random()*720}deg) scale(0.5)`,
+                transform:`translate(${(Math.random()-0.5)*400}px,${window.innerHeight+100}px) rotate(${Math.random()*720}deg) scale(0.5)`,
                 opacity:0
             }
         ],{
