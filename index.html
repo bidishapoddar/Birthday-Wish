@@ -389,7 +389,6 @@ button:hover{
 
 <div class="container">
 
-<!-- COUNTDOWN LAYER - TOP -->
 <div class="countdown-layer">
 <div class="countdown-title">Happy Birthday Suman! 🎂</div>
 <div class="countdown-subtitle">⏱️ COUNTDOWN TO BIRTHDAY ⏱️</div>
@@ -415,7 +414,6 @@ button:hover{
 </div>
 </div>
 
-<!-- CARD LAYER - BOTTOM -->
 <div class="card">
 <h1>Happy Birthday Suman! 🎂</h1>
 <div class="subtitle">A Very Special Day</div>
@@ -454,6 +452,16 @@ function updateCountdown() {
     const birthday = new Date(2026, 6, 13, 0, 0, 0, 0);
     const diff = birthday - istTime;
     
+    // Check if the target time has arrived or passed
+    if (diff <= 0) {
+        const countdownPanel = document.querySelector('.countdown-layer');
+        if (countdownPanel) {
+            countdownPanel.style.display = 'none'; // Completely hides the countdown
+        }
+        clearInterval(countdownInterval); // Stops the timer interval
+        return;
+    }
+    
     const totalSeconds = Math.floor(diff / 1000);
     const days = Math.floor(totalSeconds / (24 * 60 * 60));
     const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
@@ -466,8 +474,9 @@ function updateCountdown() {
     document.getElementById('secs').textContent = String(secs).padStart(2, '0');
 }
 
+// Store the interval loop so we can clear it cleanly later
 updateCountdown();
-setInterval(updateCountdown, 1000);
+const countdownInterval = setInterval(updateCountdown, 1000);
 
 // Web Audio API - Birthday Song Generator
 function playSong() {
