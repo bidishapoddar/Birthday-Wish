@@ -289,15 +289,6 @@ button:hover{
     box-shadow:0 10px 30px rgba(99,199,122,.4);
 }
 
-.song-button{
-    background:linear-gradient(135deg,#a78bfa,#7c3aed);
-    box-shadow:0 6px 20px rgba(167,139,250,.3);
-}
-
-.song-button:hover{
-    box-shadow:0 10px 30px rgba(167,139,250,.4);
-}
-
 .balloon{
     position:fixed;
     bottom:-80px;
@@ -437,7 +428,6 @@ Happy Birthday Suman!
 </div>
 
 <div class="button-group">
-<button class="song-button" onclick="playSong()">🎵 Birthday Song ❤️</button>
 <button onclick="celebrate()">🎉 Confetti ✨</button>
 </div>
 </div>
@@ -471,55 +461,65 @@ setInterval(updateCountdown, 1000);
 
 // Web Audio API - Birthday Song Generator
 function playSong() {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // Notes for "Happy Birthday" melody
-    const notes = [
-        { freq: 261.63, duration: 0.3 }, // C
-        { freq: 261.63, duration: 0.3 }, // C
-        { freq: 293.66, duration: 0.6 }, // D
-        { freq: 261.63, duration: 0.6 }, // C
-        { freq: 329.63, duration: 0.6 }, // E
-        { freq: 311.13, duration: 1.2 }, // D#
-        { freq: 261.63, duration: 0.3 }, // C
-        { freq: 261.63, duration: 0.3 }, // C
-        { freq: 293.66, duration: 0.6 }, // D
-        { freq: 261.63, duration: 0.6 }, // C
-        { freq: 349.23, duration: 0.6 }, // F
-        { freq: 329.63, duration: 1.2 }, // E
-        { freq: 261.63, duration: 0.3 }, // C
-        { freq: 261.63, duration: 0.3 }, // C
-        { freq: 523.25, duration: 0.6 }, // C (higher)
-        { freq: 392.00, duration: 0.6 }, // G
-        { freq: 349.23, duration: 0.6 }, // F
-        { freq: 329.63, duration: 0.6 }, // E
-        { freq: 293.66, duration: 0.6 }, // D
-        { freq: 277.18, duration: 1.2 }, // C#
-    ];
-    
-    let currentTime = audioContext.currentTime;
-    
-    notes.forEach(note => {
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
+    try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
+        // Notes for "Happy Birthday" melody
+        const notes = [
+            { freq: 261.63, duration: 0.3 }, // C
+            { freq: 261.63, duration: 0.3 }, // C
+            { freq: 293.66, duration: 0.6 }, // D
+            { freq: 261.63, duration: 0.6 }, // C
+            { freq: 329.63, duration: 0.6 }, // E
+            { freq: 311.13, duration: 1.2 }, // D#
+            { freq: 261.63, duration: 0.3 }, // C
+            { freq: 261.63, duration: 0.3 }, // C
+            { freq: 293.66, duration: 0.6 }, // D
+            { freq: 261.63, duration: 0.6 }, // C
+            { freq: 349.23, duration: 0.6 }, // F
+            { freq: 329.63, duration: 1.2 }, // E
+            { freq: 261.63, duration: 0.3 }, // C
+            { freq: 261.63, duration: 0.3 }, // C
+            { freq: 523.25, duration: 0.6 }, // C (higher)
+            { freq: 392.00, duration: 0.6 }, // G
+            { freq: 349.23, duration: 0.6 }, // F
+            { freq: 329.63, duration: 0.6 }, // E
+            { freq: 293.66, duration: 0.6 }, // D
+            { freq: 277.18, duration: 1.2 }, // C#
+        ];
         
-        oscillator.frequency.value = note.freq;
-        oscillator.type = 'sine';
+        let currentTime = audioContext.currentTime;
         
-        gainNode.gain.setValueAtTime(0.3, currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, currentTime + note.duration);
+        notes.forEach(note => {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = note.freq;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, currentTime + note.duration);
+            
+            oscillator.start(currentTime);
+            oscillator.stop(currentTime + note.duration);
+            
+            currentTime += note.duration;
+        });
         
-        oscillator.start(currentTime);
-        oscillator.stop(currentTime + note.duration);
-        
-        currentTime += note.duration;
-    });
-    
-    celebrate();
+        celebrate();
+    } catch(e) {
+        console.log('Audio context not available');
+        celebrate();
+    }
 }
+
+// Auto-play birthday song on page load
+window.addEventListener('load', function() {
+    setTimeout(playSong, 500);
+});
 
 // Balloons
 for(let i=0;i<12;i++){
