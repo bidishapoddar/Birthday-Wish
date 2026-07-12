@@ -61,72 +61,93 @@ body{
 
 h1{
     font-family:'Great Vibes',cursive;
-    font-size:2.2rem;
+    font-size:2.6rem;
     font-weight:400;
     color:#2d8b57;
     animation:glow 2.5s infinite alternate;
     margin:0;
     padding:0;
-    line-height:1;
-}
-
-@keyframes glow{
-    from{text-shadow:0 0 10px rgba(169,239,187,.3);}
-    to{text-shadow:0 0 25px rgba(91,211,125,.5);}
+    line-height:1.1;
+    text-shadow:0 2px 8px rgba(45,139,87,.2);
 }
 
 .subtitle{
     color:#4f6f59;
-    font-weight:600;
-    font-size:0.9rem;
-    letter-spacing:1px;
-    margin:5px 0;
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:1.5px;
+    margin:8px 0 5px 0;
 }
 
 .date-badge{
     display:inline-block;
     margin:8px 0;
-    padding:5px 12px;
-    background:rgba(99,199,122,.15);
-    border:1px solid rgba(99,199,122,.3);
-    border-radius:18px;
+    padding:8px 16px;
+    background:rgba(99,199,122,.25);
+    border:2px solid rgba(99,199,122,.5);
+    border-radius:20px;
     color:#2d8b57;
-    font-size:0.75rem;
-    font-weight:600;
+    font-size:0.9rem;
+    font-weight:700;
 }
 
 .countdown-box{
-    background:rgba(99,199,122,.2);
-    border:1.5px solid rgba(99,199,122,.4);
+    background:rgba(99,199,122,.25);
+    border:2px solid rgba(99,199,122,.5);
     border-radius:15px;
-    padding:12px;
-    margin:10px 0;
+    padding:14px;
+    margin:12px 0;
     font-size:0.9rem;
     color:#2d8b57;
     font-weight:600;
 }
 
-.countdown-item{
-    display:inline-block;
-    margin:0 3px;
-    padding:8px 10px;
-    background:rgba(255,255,255,.6);
-    border-radius:8px;
-    min-width:45px;
+.countdown-label{
+    font-size:0.85rem;
+    font-weight:700;
+    color:#2d8b57;
+    margin-bottom:8px;
+    text-transform:uppercase;
+    letter-spacing:1px;
 }
 
-.countdown-label{
-    font-size:0.65rem;
-    font-weight:500;
-    color:#4f6f59;
-    display:block;
+.countdown-items{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    flex-wrap:wrap;
+}
+
+.countdown-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background:rgba(255,255,255,.7);
+    border-radius:10px;
+    padding:10px 8px;
+    min-width:55px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
 }
 
 .countdown-value{
-    font-size:0.95rem;
-    font-weight:700;
-    color:#2d8b57;
-    display:block;
+    font-size:1.3rem;
+    font-weight:800;
+    color:#ff2d55;
+    line-height:1;
+}
+
+.countdown-name{
+    font-size:0.65rem;
+    font-weight:600;
+    color:#4f6f59;
+    margin-top:4px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px rgba(169,239,187,.3), 0 2px 8px rgba(45,139,87,.2);}
+    to{text-shadow:0 0 25px rgba(91,211,125,.5), 0 2px 8px rgba(45,139,87,.2);}
 }
 
 .message{
@@ -150,7 +171,7 @@ h1{
 
 .heart{
     color:#ff2d55;
-    font-size:1.6rem;
+    font-size:1.8rem;
     animation:beat 1s infinite;
     display:inline-block;
     margin:3px 0;
@@ -173,6 +194,7 @@ h1{
     font-weight:bold;
     margin-top:5px;
     animation:beatSlow 1.5s infinite;
+    font-size:0.95rem;
 }
 
 @keyframes beatSlow{
@@ -276,29 +298,29 @@ button:hover{
 <body>
 
 <div class="card">
-<h1>Happy Birthday Suman! 🎂</h1>
-<div class="subtitle">✨ A Very Special Day ✨</div>
-<div class="date-badge">13 July 💚</div>
+<h1>🎂 Happy Birthday Suman! 🎂</h1>
+<div class="subtitle">13th July</div>
+<div class="date-badge">💚 A Special Day 💚</div>
 
 <div class="countdown-box">
-<div style="margin-bottom:8px; font-size:0.8rem;">Days Until Celebration:</div>
-<div>
-<span class="countdown-item">
-<span class="countdown-label">Days</span>
+<div class="countdown-label">⏱️ Countdown to Birthday:</div>
+<div class="countdown-items">
+<div class="countdown-item">
 <span class="countdown-value" id="days">0</span>
-</span>
-<span class="countdown-item">
-<span class="countdown-label">Hours</span>
+<span class="countdown-name">Days</span>
+</div>
+<div class="countdown-item">
 <span class="countdown-value" id="hours">0</span>
-</span>
-<span class="countdown-item">
-<span class="countdown-label">Mins</span>
+<span class="countdown-name">Hours</span>
+</div>
+<div class="countdown-item">
 <span class="countdown-value" id="mins">0</span>
-</span>
-<span class="countdown-item">
-<span class="countdown-label">Secs</span>
+<span class="countdown-name">Mins</span>
+</div>
+<div class="countdown-item">
 <span class="countdown-value" id="secs">0</span>
-</span>
+<span class="countdown-name">Secs</span>
+</div>
 </div>
 </div>
 
@@ -322,22 +344,22 @@ Happy Birthday Suman!
 
 <script>
 
-// Countdown Timer
+// Countdown Timer - Until next birthday (July 13)
 function updateCountdown() {
-    // Kolkata timezone (IST = UTC+5:30)
+    // Get current time in Kolkata timezone (IST = UTC+5:30)
     const now = new Date();
     const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
     
-    // Get today's date in IST
-    const today = new Date(istTime);
-    today.setHours(0, 0, 0, 0);
+    // Target: July 13 at 00:00:00 IST
+    let birthday = new Date(istTime.getFullYear(), 6, 13, 0, 0, 0, 0); // Month is 0-indexed, so 6 = July
     
-    // End of today (23:59:59)
-    const endOfDay = new Date(istTime);
-    endOfDay.setHours(23, 59, 59, 999);
+    // If birthday has already passed this year, target next year's birthday
+    if (istTime > birthday) {
+        birthday = new Date(istTime.getFullYear() + 1, 6, 13, 0, 0, 0, 0);
+    }
     
     // Calculate difference in milliseconds
-    const diff = endOfDay - istTime;
+    const diff = birthday - istTime;
     
     // Convert to days, hours, minutes, seconds
     const totalSeconds = Math.floor(diff / 1000);
