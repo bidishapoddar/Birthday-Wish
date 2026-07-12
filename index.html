@@ -261,8 +261,15 @@ h1{
     50%{transform:scale(1.1);}
 }
 
-button{
+.button-group{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
     margin-top:10px;
+}
+
+button{
     padding:10px 24px;
     border:none;
     border-radius:35px;
@@ -280,6 +287,15 @@ button{
 button:hover{
     transform:translateY(-2px);
     box-shadow:0 10px 30px rgba(99,199,122,.4);
+}
+
+.song-button{
+    background:linear-gradient(135deg,#a78bfa,#7c3aed);
+    box-shadow:0 6px 20px rgba(167,139,250,.3);
+}
+
+.song-button:hover{
+    box-shadow:0 10px 30px rgba(167,139,250,.4);
 }
 
 .balloon{
@@ -420,7 +436,10 @@ Happy Birthday Suman!
 <div class="footer-love">❤️ Have a wonderful day! ❤️</div>
 </div>
 
-<button onclick="celebrate()">Magic ✨</button>
+<div class="button-group">
+<button class="song-button" onclick="playSong()">🎵 Birthday Song ❤️</button>
+<button onclick="celebrate()">🎉 Confetti ✨</button>
+</div>
 </div>
 
 </div>
@@ -429,33 +448,78 @@ Happy Birthday Suman!
 
 // Countdown Timer - Until July 13, 2026
 function updateCountdown() {
-    // Get current time in Kolkata timezone (IST = UTC+5:30)
     const now = new Date();
     const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
     
-    // Target: July 13, 2026 at 00:00:00 IST
-    const birthday = new Date(2026, 6, 13, 0, 0, 0, 0); // Month is 0-indexed, so 6 = July
-    
-    // Calculate difference in milliseconds
+    const birthday = new Date(2026, 6, 13, 0, 0, 0, 0);
     const diff = birthday - istTime;
     
-    // Convert to days, hours, minutes, seconds
     const totalSeconds = Math.floor(diff / 1000);
     const days = Math.floor(totalSeconds / (24 * 60 * 60));
     const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
     const mins = Math.floor((totalSeconds % (60 * 60)) / 60);
     const secs = totalSeconds % 60;
     
-    // Update display with padding
     document.getElementById('days').textContent = String(days).padStart(2, '0');
     document.getElementById('hours').textContent = String(hours).padStart(2, '0');
     document.getElementById('mins').textContent = String(mins).padStart(2, '0');
     document.getElementById('secs').textContent = String(secs).padStart(2, '0');
 }
 
-// Update countdown every second
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+// Web Audio API - Birthday Song Generator
+function playSong() {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // Notes for "Happy Birthday" melody
+    const notes = [
+        { freq: 261.63, duration: 0.3 }, // C
+        { freq: 261.63, duration: 0.3 }, // C
+        { freq: 293.66, duration: 0.6 }, // D
+        { freq: 261.63, duration: 0.6 }, // C
+        { freq: 329.63, duration: 0.6 }, // E
+        { freq: 311.13, duration: 1.2 }, // D#
+        { freq: 261.63, duration: 0.3 }, // C
+        { freq: 261.63, duration: 0.3 }, // C
+        { freq: 293.66, duration: 0.6 }, // D
+        { freq: 261.63, duration: 0.6 }, // C
+        { freq: 349.23, duration: 0.6 }, // F
+        { freq: 329.63, duration: 1.2 }, // E
+        { freq: 261.63, duration: 0.3 }, // C
+        { freq: 261.63, duration: 0.3 }, // C
+        { freq: 523.25, duration: 0.6 }, // C (higher)
+        { freq: 392.00, duration: 0.6 }, // G
+        { freq: 349.23, duration: 0.6 }, // F
+        { freq: 329.63, duration: 0.6 }, // E
+        { freq: 293.66, duration: 0.6 }, // D
+        { freq: 277.18, duration: 1.2 }, // C#
+    ];
+    
+    let currentTime = audioContext.currentTime;
+    
+    notes.forEach(note => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = note.freq;
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0.3, currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, currentTime + note.duration);
+        
+        oscillator.start(currentTime);
+        oscillator.stop(currentTime + note.duration);
+        
+        currentTime += note.duration;
+    });
+    
+    celebrate();
+}
 
 // Balloons
 for(let i=0;i<12;i++){
