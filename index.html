@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Suman 💚</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -24,6 +24,7 @@ body{
     background:linear-gradient(-45deg,#dff8e6,#c7f0d0,#b8ecc3,#eafdf0);
     background-size:400% 400%;
     animation:bgMove 12s ease infinite;
+    position:relative;
 }
 
 @keyframes bgMove{
@@ -32,215 +33,349 @@ body{
     100%{background-position:0% 50%;}
 }
 
+.decorative-circle{
+    position:absolute;
+    border-radius:50%;
+    opacity:0.1;
+    pointer-events:none;
+}
+
+.circle-1{
+    width:400px;
+    height:400px;
+    background:#2d8b57;
+    top:-100px;
+    left:-100px;
+    animation:float 8s ease-in-out infinite;
+}
+
+.circle-2{
+    width:300px;
+    height:300px;
+    background:#ff2d55;
+    bottom:-50px;
+    right:-50px;
+    animation:float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(30px,-30px);}
+}
+
 .card{
     width:90%;
     max-width:760px;
-    padding:45px;
+    padding:50px;
     text-align:center;
-    background:rgba(255,255,255,.35);
-    backdrop-filter:blur(14px);
-    border-radius:30px;
-    border:2px solid rgba(255,255,255,.5);
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    background:rgba(255,255,255,.40);
+    backdrop-filter:blur(20px);
+    border-radius:35px;
+    border:2px solid rgba(255,255,255,.6);
+    box-shadow:0 20px 60px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.5);
     animation:floatCard 4s ease-in-out infinite;
     position:relative;
     z-index:10;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent);
 }
 
 @keyframes floatCard{
     0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-8px);}
+    50%{transform:translateY(-12px);}
 }
 
 h1{
-    font-family:'Pacifico',cursive;
-    font-size:3.1rem;
+    font-family:'Great Vibes',cursive;
+    font-size:3.5rem;
+    font-weight:400;
     color:#2d8b57;
-    animation:glow 2s infinite alternate;
+    animation:glow 2.5s infinite alternate;
+    letter-spacing:1px;
+    text-shadow:0 2px 10px rgba(45,139,87,.1);
 }
 
 @keyframes glow{
-    from{text-shadow:0 0 8px #a9efbb;}
-    to{text-shadow:0 0 25px #5bd37d;}
+    from{text-shadow:0 0 10px rgba(169,239,187,.3), 0 2px 10px rgba(45,139,87,.1);}
+    to{text-shadow:0 0 30px rgba(91,211,125,.5), 0 2px 10px rgba(45,139,87,.1);}
 }
 
 .subtitle{
-    margin-top:8px;
+    margin-top:12px;
     color:#4f6f59;
     font-weight:600;
     letter-spacing:2px;
+    font-size:1.1rem;
+}
+
+.date-badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 20px;
+    background:rgba(99,199,122,.15);
+    border:1.5px solid rgba(99,199,122,.3);
+    border-radius:25px;
+    color:#2d8b57;
+    font-size:0.95rem;
+    font-weight:600;
 }
 
 .message{
-    margin-top:28px;
+    margin-top:35px;
     color:#35543d;
-    font-size:1.15rem;
-    line-height:1.8;
+    font-size:1.1rem;
+    line-height:1.9;
+    font-weight:300;
+}
+
+.message-line{
+    margin:15px 0;
+    opacity:0;
+    animation:fadeInUp 0.8s ease forwards;
+}
+
+.message-line:nth-child(1){animation-delay:0.2s;}
+.message-line:nth-child(2){animation-delay:0.4s;}
+.message-line:nth-child(3){animation-delay:0.6s;}
+.message-line:nth-child(4){animation-delay:0.8s;}
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .highlight{
     color:#1d8c4f;
-    font-weight:bold;
+    font-weight:600;
+    background:linear-gradient(135deg,rgba(99,199,122,.1),rgba(169,239,187,.1));
+    padding:12px 16px;
+    border-radius:12px;
+    display:inline-block;
+    margin:10px 0;
 }
 
 .heart{
     color:#ff2d55;
-    font-size:2.2rem;
+    font-size:2.5rem;
     animation:beat 1s infinite;
-    text-shadow:0 0 15px rgba(255,45,85,.5);
+    text-shadow:0 0 20px rgba(255,45,85,.4);
+    display:inline-block;
 }
 
 @keyframes beat{
     0%,100%{transform:scale(1);}
-    50%{transform:scale(1.25);}
+    25%{transform:scale(1.2);}
+    50%{transform:scale(1.4);}
+    75%{transform:scale(1.2);}
 }
 
 .footer{
-    margin-top:30px;
+    margin-top:35px;
     color:#45614e;
     font-size:1rem;
+    font-weight:300;
 }
 
-.footer span{
+.footer-love{
     color:#ff2d55;
-    font-size:1.1rem;
+    font-size:1.2rem;
     font-weight:bold;
+    margin-top:10px;
+    animation:beatSlow 1.5s infinite;
+}
+
+@keyframes beatSlow{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.1);}
 }
 
 button{
-    margin-top:30px;
-    padding:14px 30px;
+    margin-top:35px;
+    padding:16px 35px;
     border:none;
-    border-radius:40px;
-    background:#63c77a;
+    border-radius:50px;
+    background:linear-gradient(135deg,#63c77a,#4aae63);
     color:white;
     cursor:pointer;
     font-size:1rem;
-    transition:.3s;
+    font-weight:600;
+    transition:all 0.3s ease;
+    box-shadow:0 8px 25px rgba(99,199,122,.3);
+    position:relative;
+    overflow:hidden;
+}
+
+button::before{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:0;
+    height:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.3);
+    transform:translate(-50%,-50%);
+    transition:width 0.6s,height 0.6s;
+}
+
+button:hover::before{
+    width:300px;
+    height:300px;
 }
 
 button:hover{
-    transform:scale(1.08);
-    background:#4aae63;
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(99,199,122,.4);
+}
+
+button:active{
+    transform:translateY(-1px);
 }
 
 .balloon{
     position:absolute;
     bottom:-120px;
-    width:42px;
+    width:45px;
     animation:rise linear infinite;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,.1));
 }
 
 .balloon::before{
     content:"";
     position:absolute;
-    width:42px;
-    height:52px;
-    border-radius:50%;
-    background:#95e6a7;
+    width:45px;
+    height:55px;
+    border-radius:50% 50% 50% 40%;
+    background:linear-gradient(135deg,#95e6a7,#7fd499);
+    box-shadow:inset -2px -2px 5px rgba(0,0,0,.1);
 }
 
 .balloon::after{
     content:"";
     position:absolute;
-    left:20px;
-    top:52px;
-    width:2px;
-    height:60px;
-    background:#666;
+    left:22px;
+    top:55px;
+    width:1.5px;
+    height:65px;
+    background:linear-gradient(180deg,#888,#aaa);
 }
 
 @keyframes rise{
     from{
-        transform:translateY(0);
+        transform:translateY(0) rotateZ(0deg);
         opacity:1;
     }
     to{
-        transform:translateY(-120vh);
+        transform:translateY(-120vh) rotateZ(15deg);
         opacity:0;
     }
 }
 
 .sparkle{
     position:absolute;
-    width:5px;
-    height:5px;
+    width:6px;
+    height:6px;
     border-radius:50%;
     background:white;
     animation:twinkle 2s infinite;
+    box-shadow:0 0 8px #fff;
 }
 
 @keyframes twinkle{
     0%,100%{
-        opacity:.2;
+        opacity:.1;
         transform:scale(.5);
     }
     50%{
         opacity:1;
-        transform:scale(2);
+        transform:scale(1.5);
     }
 }
 
 .floatHeart{
     position:absolute;
     color:#ff2d55;
-    font-size:22px;
+    font-size:24px;
     animation:heartFloat linear infinite;
-    opacity:.75;
+    opacity:.8;
+    text-shadow:0 0 10px rgba(255,45,85,.3);
 }
 
 @keyframes heartFloat{
     from{
-        transform:translateY(100vh) scale(.6);
+        transform:translateY(100vh) scale(.5) rotateZ(0deg);
         opacity:0;
     }
     20%{
         opacity:1;
     }
     to{
-        transform:translateY(-120vh) scale(1.3);
+        transform:translateY(-120vh) scale(1.2) rotateZ(360deg);
         opacity:0;
     }
+}
+
+.star{
+    position:absolute;
+    color:#ffd700;
+    font-size:18px;
+    animation:twinkleStar 1.5s infinite;
+    text-shadow:0 0 8px rgba(255,215,0,.5);
+}
+
+@keyframes twinkleStar{
+    0%,100%{opacity:0.3;}
+    50%{opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
+<div class="decorative-circle circle-1"></div>
+<div class="decorative-circle circle-2"></div>
+
 <div class="card">
 
 <h1>Happy Birthday Suman! 🎂</h1>
 
-<div class="subtitle">13 July 💚</div>
+<div class="subtitle">🎉 A Special Day 🎉</div>
+<div class="date-badge">13 July 💚</div>
 
 <div class="message">
+<div class="message-line">Wishing the happiest birthday to the most amazing person! 💚</div>
 
-Wishing the happiest birthday to the most amazing person. 💚<br><br>
+<div class="message-line">May this new year of your life be filled with endless happiness,<br>beautiful memories, exciting adventures, and every success you dream of.</div>
 
-May this new year of your life be filled with endless happiness,
-beautiful memories, exciting adventures, and every success you dream of.
-
-<br><br>
-
+<div class="message-line">
 <span class="highlight">
-Keep smiling, keep shining, and never stop believing in yourself.
-You deserve all the love, peace, and joy in the world.
+Keep smiling, keep shining, and never stop believing in yourself.<br>You deserve all the love, peace, and joy in the world.
 </span>
+</div>
 
-<br><br>
+<div class="message-line">No matter where life takes us,<br>I hope today reminds you just how special and deeply loved you are.</div>
 
-No matter where life takes us,
-I hope today reminds you just how special and deeply loved you are.
-
-<br><br>
-
-<span class="heart">❤️</span>
-
+<div class="message-line"><span class="heart">❤️</span></div>
 </div>
 
 <div class="footer">
-Happy Birthday once again!<br>
-<span>❤️ Have the most wonderful day! ❤️</span>
+<div>Happy Birthday once again!</div>
+<div class="footer-love">❤️ Have the most wonderful day! ❤️</div>
 </div>
 
 <button onclick="celebrate()">Click for Birthday Magic ✨</button>
@@ -250,82 +385,100 @@ Happy Birthday once again!<br>
 <script>
 
 // Balloons
-for(let i=0;i<18;i++){
-let b=document.createElement("div");
-b.className="balloon";
-b.style.left=Math.random()*100+"vw";
-b.style.animationDuration=(8+Math.random()*6)+"s";
-b.style.animationDelay=Math.random()*5+"s";
-document.body.appendChild(b);
+for(let i=0;i<20;i++){
+    let b=document.createElement("div");
+    b.className="balloon";
+    b.style.left=Math.random()*100+"vw";
+    b.style.animationDuration=(9+Math.random()*7)+"s";
+    b.style.animationDelay=Math.random()*6+"s";
+    
+    const colors=['#95e6a7','#ff6b81','#ffb347','#87ceeb','#ffc0cb'];
+    b.style.setProperty('--balloon-color',colors[Math.floor(Math.random()*colors.length)]);
+    
+    document.body.appendChild(b);
 }
 
 // Sparkles
-for(let i=0;i<60;i++){
-let s=document.createElement("div");
-s.className="sparkle";
-s.style.left=Math.random()*100+"vw";
-s.style.top=Math.random()*100+"vh";
-s.style.animationDelay=Math.random()*2+"s";
-document.body.appendChild(s);
+for(let i=0;i<70;i++){
+    let s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    s.style.animationDelay=Math.random()*2+"s";
+    document.body.appendChild(s);
 }
 
 // Floating Hearts
-const hearts=["❤️","💕","💖","💗"];
-for(let i=0;i<25;i++){
-let h=document.createElement("div");
-h.className="floatHeart";
-h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
-h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=(7+Math.random()*6)+"s";
-h.style.animationDelay=Math.random()*5+"s";
-h.style.fontSize=(18+Math.random()*18)+"px";
-document.body.appendChild(h);
+const hearts=["❤️","💕","💖","💗","💘"];
+for(let i=0;i<30;i++){
+    let h=document.createElement("div");
+    h.className="floatHeart";
+    h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(8+Math.random()*7)+"s";
+    h.style.animationDelay=Math.random()*6+"s";
+    h.style.fontSize=(16+Math.random()*20)+"px";
+    document.body.appendChild(h);
+}
+
+// Stars
+for(let i=0;i<15;i++){
+    let star=document.createElement("div");
+    star.className="star";
+    star.innerHTML="⭐";
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+    star.style.animationDelay=Math.random()*1.5+"s";
+    document.body.appendChild(star);
 }
 
 // Confetti
 function celebrate(){
+    const colors=[
+        "#ff2d55",
+        "#ff6b81",
+        "#63c77a",
+        "#a4f0b5",
+        "#ffb347",
+        "#87ceeb",
+        "#ffc0cb",
+        "#ffffff"
+    ];
 
-const colors=[
-"#ff2d55",
-"#ff6b81",
-"#63c77a",
-"#a4f0b5",
-"#ffffff"
-];
+    for(let i=0;i<280;i++){
+        let c=document.createElement("div");
+        
+        c.style.position="fixed";
+        c.style.left=Math.random()*100+"vw";
+        c.style.top="-20px";
+        c.style.width=Math.random()*8+8+"px";
+        c.style.height=Math.random()*8+8+"px";
+        c.style.borderRadius="50%";
+        c.style.background=colors[Math.floor(Math.random()*colors.length)];
+        c.style.boxShadow="0 0 10px "+colors[Math.floor(Math.random()*colors.length)];
 
-for(let i=0;i<220;i++){
+        document.body.appendChild(c);
 
-let c=document.createElement("div");
+        let duration=3000+Math.random()*2000;
 
-c.style.position="fixed";
-c.style.left=Math.random()*100+"vw";
-c.style.top="-20px";
-c.style.width="10px";
-c.style.height="10px";
-c.style.borderRadius="50%";
-c.style.background=colors[Math.floor(Math.random()*colors.length)];
+        c.animate([
+            {
+                transform:"translateY(0) rotate(0deg) scale(1)",
+                opacity:1
+            },
+            {
+                transform:`translate(${(Math.random()-0.5)*500}px,${window.innerHeight+120}px) rotate(${Math.random()*720}deg) scale(0.5)`,
+                opacity:0
+            }
+        ],{
+            duration:duration,
+            easing:"ease-out"
+        });
 
-document.body.appendChild(c);
-
-let duration=2500+Math.random()*1800;
-
-c.animate([
-{
-transform:"translateY(0) rotate(0deg)"
-},
-{
-transform:`translate(${(Math.random()-0.5)*450}px,${window.innerHeight+120}px) rotate(${Math.random()*720}deg)`
+        setTimeout(()=>c.remove(),duration);
+    }
 }
-],{
-duration:duration,
-easing:"ease-out"
-});
 
-setTimeout(()=>c.remove(),duration);
-
-}
-
-}
 </script>
 
 </body>
